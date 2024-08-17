@@ -8,13 +8,13 @@
 // import List from "./list.jsx";
 // import Button from "./button.jsx";
 // import ProfilePicture from "./profilePicjure.jsx";
-// import MyComponent from "./myComponent.jsx";
+import MyComponent from "./myComponent.jsx";
 // import Counter from "./counter.jsx";
-import ColorPicker from "./colorPicker.jsx";
+// import ColorPicker from "./colorPicker.jsx";
 
 function App() {
 
-  return( <ColorPicker /> );
+  return( <MyComponent /> );
 
 }
 
