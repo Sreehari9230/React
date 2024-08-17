@@ -1,9 +1,9 @@
-import ToDoList from "./todoList";
+import ToDoList from "./todoList.jsx";
 
 
 function App() {
 
-  return( <MyComponent /> );
+  return( <ToDoList /> );
 
 }
 
