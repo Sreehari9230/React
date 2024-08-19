@@ -1,55 +1,34 @@
-import React ,{useState} from 'react'
+import React ,{useState, useEffect} from 'react'
 
 function MyComponent(){
 
-    const [cars,setCars] = useState([]);
-    const [carYear,setCarYear] = useState(new Date().getFullYear())
-    const [carMake,setCarMake] = useState('')
-    const [carModel,setCarModel] = useState('')
+    const [width,setWidth] = useState(window.innerWidth)
+    const [height,setHeight] = useState(window.innerHeight)
 
-    function handleAddCar(){
-        const newCar = {year: carYear,
-                        make:carMake,
-                        model:carModel}
+    useEffect(()=>{
+        window.addEventListener('resize', handleResize)
+        console.log('event listenr added');
 
-        setCars(c =>[...c, newCar])
-        setCarYear(new Date().getFullYear())
-        setCarMake('')
-        setCarModel('')
-    }
-    
-    function handleRemoveCar(index){
-        setCars(c => c.filter((_,i) => i != index))
-    }
+        return () => {
+            window.removeEventListener('resize', handleResize)
+            console.log('Event listner removed');
+            
+        }
+    }, [])
 
-    function handleYearChange(e){
-        setCarYear(e.target.value)
-    }
+    useEffect(() =>{
+        document.title = `size: ${width} x ${height}`
+    }, [width,height])
 
-    function handleMakeChange(e){
-        setCarMake(e.target.value)
+    function handleResize(){
+        setWidth(window.innerWidth)
+        setHeight(window.innerHeight)
     }
 
-    function handleModelChange(e){
-        setCarModel(e.target.value)
-    }
-   
-    return (<div>
-        <h2>List of Car Objects</h2>
-        <ul>
-            {cars.map((car,index)=> 
-            <li key={index} onClick={() => handleRemoveCar(index)}>
-                {car.year}{car.make}{car.model}
-            </li>)}
-        </ul>
-
-        <input type="number" value={carYear} onChange={handleYearChange} /><br />
-        <input type="text" value={carMake} onChange={handleMakeChange} 
-        placeholder='enter make'/><br />
-        <input type="text" value={carModel} onChange={handleModelChange}
-        placeholder='enter model'/><br />
-        <button onClick={handleAddCar}>Add Car</button>
-            </div>)
+    return (<>
+        <p>Window Width: {width}px</p>
+        <p>Window Height: {height}px</p>
+    </>)
             
 }
 
