@@ -39,6 +39,18 @@ function ToDoList(){
         }
     }
 
+    // function stikeOut(index){
+    //     if(index>=0 && index<=tasks.length-1){
+    //         const allTasks = [...tasks]
+    //         for(let i=0;i<index;i++){
+    //             let strikeTask = allTasks[i]
+    //         }
+    //         const updatedTasks = tasks.filter((_,i) => i != index)
+    //         setTasks(updatedTasks)
+            
+    //     }
+    // }
+
     return(
         <div className='to-do-list'>
             <h1>To-Do-List</h1>
@@ -74,6 +86,11 @@ function ToDoList(){
                     onClick={() => moveTaskDown(index)}>
                         👇
                     </button>
+                    {/* <button 
+                    className='move-button' 
+                    onClick={() => stikeOut(index)}>
+                        ❌
+                    </button> */}
                 </li>
                 )}
             </ol>
